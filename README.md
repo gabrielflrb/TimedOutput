@@ -28,6 +28,8 @@ Its non-blocking design minimizes interference with the main program loop.
 ### Example Sketch
 
 ```cpp
+#include <TimedOutput.hpp>
+
 TimedOutput led(13); // Controls LED on pin 13
 
 void setup(){
