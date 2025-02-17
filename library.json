@@ -1,0 +1,23 @@
+{
+    "name": "TimedOutput",
+    "version": "1.0.0",
+    "description": "A non-blocking Arduino/ESP library for timed digital outputs.",
+    "keywords": ["timed output", "non-blocking", "millis", "arduino", "esp"],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/gflrb/TimedOutput.git"
+    },
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Gabriel Bernardes",
+        "url": "https://github.com/gabrielflrb",
+        "maintainer": true
+      }
+    ],
+    "frameworks": ["arduino"],
+    "platforms": ["espressif32", "espressif8266", "atmelsam", "atmelavr"],
+    "export": {
+      "include": ["src", "library.json", "README.md", "LICENSE"]
+    }
+  }
