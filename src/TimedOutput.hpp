@@ -73,24 +73,27 @@ public:
     
     void repeat() { repeat(_durOn,_durOff); }
     void repeat(uint32_t durOn){ repeat(durOn, durOn); }
-    void repeat(double dutyCycle, uint32_t duration){ 
+    void repeat(uint32_t durOn, uint32_t durOff){ _configure(Mode::REPEAT, durOn, durOff); }
+    
+    
+    void repeatDutyCycle(double dutyCycle, uint32_t duration){ 
         repeat(
             static_cast<uint32_t>(duration * dutyCycle), 
             static_cast<uint32_t>(duration * (1.0 - dutyCycle))
         ); 
     }
-    void repeat(uint32_t durOn, uint32_t durOff){ _configure(Mode::REPEAT, durOn, durOff); }
 
     void repeatX(uint8_t times){ repeatX(times, _durOn, _durOff); }
     void repeatX(uint8_t times, uint32_t durOn){ repeatX(times,durOn,durOn); }
-    void repeatX(uint8_t times, double dutyCycle, uint32_t duration){ 
+    void repeatX(uint8_t times, uint32_t durOn, uint32_t durOff){ _configure(Mode::REPEATX, durOn,durOff,times); }
+    
+    void repeatXDutyCycle(uint8_t times, double dutyCycle, uint32_t duration){ 
         repeatX(
             times,
             static_cast<uint32_t>(duration * dutyCycle), 
             static_cast<uint32_t>(duration * (1.0 - dutyCycle))
         ); 
     }
-    void repeatX(uint8_t times, uint32_t durOn, uint32_t durOff){ _configure(Mode::REPEATX, durOn,durOff,times); }
 
     void update();
 };

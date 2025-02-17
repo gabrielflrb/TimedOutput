@@ -17,7 +17,7 @@ Its non-blocking design minimizes interference with the main program loop.
     - Cycle duration
     - Duty cycle
 - **Configurable logic level inversion** for active-low devices.
-- **16 byte memory footprint** per instance (v1.0)
+- **16 byte memory footprint** per instance.
 
 ## Important Note
 
@@ -59,7 +59,7 @@ More detailed example in the [examples](examples/) folder
 ### Manual Operation
 
 #### `void on()`
-- Turns the output **ON indefinitely**.
+- Turns the output **ON indefinitely**, until `off()` or another mode is called.
 
 #### `void off()`
 - Turns the output **OFF immediately**.
@@ -70,28 +70,28 @@ More detailed example in the [examples](examples/) folder
 - Turns the output ON for `duration` milliseconds, then automatically turns OFF.
 
 ### Repeating Pulses
+Repeat ON/OFF cycles indefinitely, until `off()` or another mode is called.
 
 #### `void repeat(uint32_t durOn, uint32_t durOff)`
-- Repeats ON/OFF cycles indefinitely.
 - `durOn`: Time in milliseconds the output stays ON.
 - `durOff`: Time in milliseconds the output stays OFF.
 
 #### `void repeat(uint32_t durOn)`
 - Uses the same ON/OFF duration
 
-#### `void repeat(double dutyCycle, uint32_t duration)`
-- `dutyCycle`: Percentage of the cycle in which the output will be ON.
-- `duration`: Total duration of ON/OFF cycle in milliseconds.
-
 #### `void repeat()`
 - Restarts the previous repeat cycle with the last used values.
 - May have unexpected results if previous mode wasn't repeat. Use with caution.
 
+#### `void repeatDutyCycle(double dutyCycle, uint32_t duration)`
+- `dutyCycle`: Percentage of the cycle in which the output will be ON.
+- `duration`: Total duration of ON/OFF cycle in milliseconds.
+
 
 ### Repeating Pulses (with counter)
+Run a **limited** number of ON/OFF cycles (`times` times), then turn off.
 
 #### `void repeatX(uint8_t times, uint32_t durOn, uint32_t durOff)`
-- Runs a **limited** number of ON/OFF cycles (`times` times), then turns off.
 - `times`: Number of repetitions.
 - `durOn`: Time in milliseconds the output stays ON.
 - `durOff`: Time in milliseconds the output stays OFF.
@@ -100,12 +100,11 @@ More detailed example in the [examples](examples/) folder
 #### `void repeatX(uint8_t times, uint32_t durOn)`
 - Uses the same ON/OFF duration
 
-#### `void repeatX(uint8_t times, double dutyCycle, uint32_t duration)`
-- `dutyCycle`: Percentage of the cycle in which the output will be ON.
-- `duration`: Total duration of ON/OFF cycle in milliseconds.
-
 #### `void repeatX(uint8_t times)`
 - Restarts the previous repeat cycle with the last used values.
 - May have unexpected results if previous mode wasn't repeat. Use with caution.
 
+#### `void repeatXDutyCycle(uint8_t times, double dutyCycle, uint32_t duration)`
+- `dutyCycle`: Percentage of the cycle in which the output will be ON.
+- `duration`: Total duration of ON/OFF cycle in milliseconds.
 

@@ -38,13 +38,6 @@ void setup() {
 
   wait(3000);
 
-  Serial.println(F("Repeat 5 times, 75% duty cycle, 1000 ms cycle duration."));
-  led.repeatX(5, 0.75, 1000);
-
-  do { led.update(); } while (!led.isOff());
-  
-  wait(3000);
-
   Serial.println(F("Repeat 3x, 1000ms cycle duration."));
   led.repeatX(3, 500);
 
